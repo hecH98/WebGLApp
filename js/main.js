@@ -18,12 +18,12 @@ var arrayCube = [];
 function init()
 {
 	// Init Scene
-	// vertices = [0., 0.5, 0.,	// X0, y0, z0
-	// 		    -0.5, -0.5, 0.,
-	// 		     0.5, -0.5, 0.
-	// 		    ];
+	vertices = [0., 0.5, 0.,	// X0, y0, z0
+			    -0.5, -0.5, 0.,
+			     0.5, -0.5, 0.
+			    ];
 
-	// indices =[0, 1, 2];
+	indices =[0, 1, 2];
 	// vertices = [0., 0., 0.,
 	// 			0., 0.5, 0.,
 	// 			-0.5, 0., 0.,
@@ -31,27 +31,43 @@ function init()
 	// 		];  
 	// indices =[1,2,3,4,1,0,4,6,8,3,8,6,4,1,9,5,6,9,7,3,7,9,5,0];	
 
-	vertices = [1., 1., 1., // V0
-		-1., 1., 1., // v1
-	 -1.,-1., 1.,  // V2
-	  1., -1.,1.,
-	  1., -1., -1.,
-	  1., 1., -1.,
-	 -1., 1., -1.,
-	 -1., -1., -1.
-	];
-
-	indices = [0, 1, 2,  0, 2, 3, 	// Front face
-		0, 3, 4,  0, 4, 5,	// Right face
-		0, 5, 6,  0, 6, 1,	// Top face
-		1, 6, 7,  1, 7, 2,	// Left face
-		7, 4, 3,  7, 3, 2,	// Bottom face
-		4, 7, 6,  4, 6, 5	// Back face
-	   ];
+	// vertices = [1., 1., 1., // V0
+	// 	-1., 1., 1., // v1
+	//  -1.,-1., 1.,  // V2
+	//   1., -1.,1.,
+	//   1., -1., -1.,
+	//   1., 1., -1.,
+	//  -1., 1., -1.,
+	//  -1., -1., -1.
+	// ];
 		
+	// -------- pyramid ----------
+	// vertices = [ -1.*factor, 0.*factor, -1.*factor, 	// V0
+	// 	-1.*factor, 0.*factor, 1.*factor,	// v1
+	// 	1.*factor, 0.*factor, 1.*factor,	// V2
+	// 	 1.*factor, 0.*factor, -1.*factor,	// V3
+	// 	 0.*factor, 1.*factor, 0.*factor	// V4
+	// 	];
+		
+	// indices = [0, 1, 2, 3, 0, 4, 3, 2, 4, 1];
+	var pyramid = new createPyramid(1,2,3,4,5);
+	vertices = pyramid.vertices;
+	indices = pyramid.indices;
+	console.log("vertices");
+	console.log(pyramid.vertices);
+	console.log("indices");
+	console.log(pyramid.indices);
+	var cube1 = new createCube(2,3,4,5);
+	vertices = cube1.vertices;
+	indices = cube1.indices;
+	console.log("vertices");
+	console.log(vertices);
+	console.log("indices");
+	console.log(indices);
+	
 	
 
-	// Init Parameters
+	// Init Parameters 
 	orbitCamera = false;
 	home = false;
 	theta = 0.;
