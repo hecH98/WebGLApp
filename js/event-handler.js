@@ -17,6 +17,8 @@ function clickButtonHomeEventListener(event)
 {
 	home = true;
 	orbitCamera = false;
+	buffersVBO = [];
+	buffersIBO = [];
 
 	// reseting camera transformation
 	document.getElementById("range-panX").value = 0;
@@ -26,18 +28,25 @@ function clickButtonHomeEventListener(event)
 	document.getElementById("label-range-panY").innerHTML = 0;
 	document.getElementById("label-range-zoom").innerHTML = 0;
 
-	// reseting cameras parameters
-	document.getElementById("label-xEye").innerHTML = "0.0";
-	document.getElementById("label-yEye").innerHTML = "0.0";
-	document.getElementById("label-zEye").innerHTML = "1.0";
+	// reseting cube
+	document.getElementById("text-size-cube").value = 1;
+	document.getElementById("text-cube-posx").value = 0
+	document.getElementById("text-cube-posy").value = 0;
+	document.getElementById("text-cube-posz").value = 0;
 
-	document.getElementById("label-xTarget").innerHTML = "0.0";
-	document.getElementById("label-yTarget").innerHTML = "0.0";
-	document.getElementById("label-zTarget").innerHTML = "0.0";
+	// reseting pyramid
+	document.getElementById("text-pyramid-base").value = 1;
+	document.getElementById("text-pyramid-height").value = 1;
+	document.getElementById("text-pyramid-posx").value = 0
+	document.getElementById("text-pyramid-posy").value = 0;
+	document.getElementById("text-pyramid-posz").value = 0;
 
-	document.getElementById("label-xUp").innerHTML = "0.0";
-	document.getElementById("label-yUp").innerHTML = "1.0";
-	document.getElementById("label-zUp").innerHTML = "0.0";
+	// reseting rectangle
+	document.getElementById("text-rectangle-base").value = 2;
+	document.getElementById("text-rectangle-height").value = 1;
+	document.getElementById("text-rectangle-posx").value = 0
+	document.getElementById("text-rectangle-posy").value = 0;
+	document.getElementById("text-rectangle-posz").value = 0;
 
 }
 
@@ -100,11 +109,14 @@ function clickButtonCubeEventListener(event) {
 	console.log("posy: ", posy);
 	console.log("posz: ", posz);
 	var cube = new createCube(size, posx, posy, posz);
-	vertices = cube.vertices;
-	indices = cube.indices;
-	console.log(vertices);
-	console.log(indices);
-	changeFigure = true;
+	var newVertices = cube.vertices;
+	var newIndices = cube.indices;
+	buffersVBO.push(newVertices);
+	buffersIBO.push(newIndices);
+	console.log(newVertices);
+	console.log(newIndices);
+	console.log("vbo",buffersVBO);
+	console.log("ibo",buffersIBO);
 	render();
 }
 
@@ -121,11 +133,14 @@ function clickButtonPyramidEventListener(event) {
 	console.log("posy: ", posy);
 	console.log("posz: ", posz);
 	var pyramid = new createPyramid(base, height, posx, posy, posz);
-	vertices = pyramid.vertices;
-	indices = pyramid.indices;
-	console.log(vertices);
-	console.log(indices);
-	changeFigure = true;
+	var newVertices = pyramid.vertices;
+	var newIndices = pyramid.indices;
+	buffersVBO.push(newVertices);
+	buffersIBO.push(newIndices);
+	console.log(newVertices);
+	console.log(newIndices);
+	console.log("vbo",buffersVBO);
+	console.log("ibo",buffersIBO);
 	render();
 }
 
@@ -142,11 +157,14 @@ function clickButtonRectangleEventListener(event) {
 	console.log("posy: ", posy);
 	console.log("posz: ", posz);
 	var rectangle = new createRectangle(base, height, posx, posy, posz);
-	vertices = rectangle.vertices;
-	indices = rectangle.indices;
-	console.log(vertices);
-	console.log(indices);
-	changeFigure = true;
+	var newVertices = rectangle.vertices;
+	var newIndices = rectangle.indices;
+	buffersVBO.push(newVertices);
+	buffersIBO.push(newIndices);
+	console.log(newVertices);
+	console.log(newIndices);
+	console.log("vbo",buffersVBO);
+	console.log("ibo",buffersIBO);
 	render();
 }
 
