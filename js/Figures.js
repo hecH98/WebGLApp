@@ -4,9 +4,19 @@ function createCube(size, posx, posy, posz) {
 	this.posy = posy;
 	this.posz = posz;
 
-	this.vertices = [(1. + posx) * size, (1. + posy) * size, (1. + posz) * size, // V0
-		(-1. + posx) * size, (1. + posy) * size, (1. + posz) * size, // v1
-		(-1. + posx) * size, (-1. + posy) * size, (1. + posz) * size, // V2
+	// this.vertices = [ 1. ,1., 1.,
+	// 	-1., 1., 1.,
+	// 	-1., -1., 1.,
+	// 	1., -1., 1.,
+	// 	1., -1., -1.,
+	// 	1., 1., -1.,
+	// 	-1., 1., -1.,
+	// 	-1., -1., -1.
+	// ];
+
+	this.vertices = [(1. + posx) * size, (1. + posy) * size, (1. + posz) * size,
+		(-1. + posx) * size, (1. + posy) * size, (1. + posz) * size,
+		(-1. + posx) * size, (-1. + posy) * size, (1. + posz) * size,
 		(1. + posx) * size, (-1. + posy) * size, (1. + posz) * size,
 		(1. + posx) * size, (-1. + posy) * size, (-1. + posz) * size,
 		(1. + posx) * size, (1. + posy) * size, (-1. + posz) * size,
@@ -29,6 +39,13 @@ function createPyramid(base, height, posx, posy, posz) {
 	this.posx = posx;
 	this.posy = posy;
 	this.posz = posz;
+
+	// this.vertices = [ -1., 0., -1.,
+	// 		-1., 0., 1.,
+	// 		1., 0., 1.,
+	// 		1., 0., -1.,
+	// 		0., 1., 0.,
+	// ];
 
 	this.vertices = [ (-1.*base)+posx, (0.*base)+posy, (-1.*base)+posz,
 		(-1.*base)+posx, (0.*base)+posy, (1.*base)+posz,
