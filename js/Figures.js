@@ -47,14 +47,24 @@ function createRectangle(base, height, posx, posy, posz) {
 	this.posy = posy;
 	this.posz = posz;
 
-	this.vertices = [2., 1., 1.,
-		-2., 1., 1.,
-		-2., -1., 1.,
-		2., -1., 1.,
-		2., -1., -1.,
-		2., 1., -1.,
-		-2., 1., -1.,
-		-2., -1., -1.		
+	// this.vertices = [2., 1., 1.,
+	// 	-2., 1., 1.,
+	// 	-2., -1., 1.,
+	// 	2., -1., 1.,
+	// 	2., -1., -1.,
+	// 	2., 1., -1.,
+	// 	-2., 1., -1.,
+	// 	-2., -1., -1.		
+	// ];
+
+	this.vertices = [(1. + posx) * base, (1. + posy) * height, (0.5 + posz) * base,
+		(-1. + posx) * base, (1. + posy) * height, (0.5 + posz) * base,
+		(-1. + posx) * base, (-1. + posy) * height, (0.5 + posz) * base,
+		(1. + posx) * base, (-1. + posy) * height, (0.5 + posz) * base,
+		(1. + posx) * base, (-1. + posy) * height, (-0.5 + posz) * base,
+		(1. + posx) * base, (1. + posy) * height, (-0.5 + posz) * base,
+		(-1. + posx) * base, (1. + posy) * height, (-0.5 + posz) * base,
+		(-1. + posx) * base, (-1. + posy) * height, (-0.5 + posz) * base,	
 	];
 
 	this.indices = [0, 1, 2, 0, 2, 3, // Front face
